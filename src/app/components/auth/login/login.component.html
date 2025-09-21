@@ -1,0 +1,74 @@
+<div class="container-fluid vh-100 bg-light d-flex flex-column">
+    <div class="row flex-grow-1 justify-content-center align-items-center">
+        <div class="col-md-4 col-sm-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3><i class="fas fa-graduation-cap me-2"></i>School Management</h3>
+                    <p class="mb-0">Sistema de gestión escolar</p>
+                </div>
+                <div class="card-body p-4">
+                    <h4 class="card-title text-center mb-4">Iniciar Sesión</h4>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" formControlName="email"
+                                    [class.is-invalid]="submitted && f['email'].errors"
+                                    placeholder="usuario@ejemplo.com">
+                            </div>
+                            @if (submitted && f['email'].errors) {
+                            <div class="invalid-feedback d-block">
+                                @if (f['email'].errors['required']) {
+                                <div>Email es requerido</div>
+                                }
+                                @if (f['email'].errors['email']) {
+                                <div>Email debe ser válido</div>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" formControlName="password"
+                                    [class.is-invalid]="submitted && f['password'].errors" placeholder="Contraseña">
+                            </div>
+                            @if (submitted && f['password'].errors) {
+                            <div class="invalid-feedback d-block">
+                                @if (f['password'].errors['required']) {
+                                <div>Contraseña es requerida</div>
+                                }
+                            </div>
+                            }
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Recordarme</label>
+                        </div>
+
+                        @if (error) {
+                        <div class="alert alert-danger">{{ error }}</div>
+                        }
+
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+                            @if (loading) {
+                            <span class="spinner-border spinner-border-sm me-2"></span>
+                            }
+                            Iniciar Sesión
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <a routerLink="/reset-password">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer se mostrará automáticamente por el app.component -->
+</div>

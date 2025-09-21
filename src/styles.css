@@ -1,1 +1,159 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importación de Bootstrap CSS */
+/* @import 'bootstrap/dist/css/bootstrap.min.css'; */
+/* @import '@fortawesome/fontawesome-free/css/all.min.css'; */
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout principal */
+.main-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 73px); /* Altura total menos el footer */
+}
+
+.sidebar-container {
+  flex: 0 0 250px;
+  background-color: #343a40;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s;
+  min-height: 100%;
+}
+
+.main-content.expanded {
+  margin-left: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  min-height: 100%;
+  background-color: #343a40;
+  color: white;
+  width: 250px;
+}
+
+.sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem 1rem;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+
+.sidebar .nav-link:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #007bff;
+}
+
+.sidebar .nav-link.active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #007bff;
+}
+
+.sidebar .nav-link i {
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Footer */
+app-footer {
+  margin-top: auto;
+}
+
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 1rem 0;
+  border-top: 1px solid #444;
+}
+
+/* Páginas de autenticación */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-wrapper router-outlet {
+  flex: 1;
+}
+
+/* Dashboard cards */
+.stat-card {
+  transition: transform 0.3s;
+  height: 100%;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: fixed;
+    z-index: 1000;
+    height: calc(100vh - 73px);
+    margin-left: -250px;
+    transition: margin-left 0.3s;
+  }
+  
+  .sidebar-container.show {
+    margin-left: 0;
+  }
+  
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .main-wrapper.with-sidebar .main-content {
+    margin-left: 250px;
+  }
+}
+
+/* Mejoras visuales */
+.bg-primary {
+  background-color: #4e73df !important;
+  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+}
+
+.text-primary {
+  color: #4e73df !important;
+}
+
+.btn-primary {
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2653d4;
+}

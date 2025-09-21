@@ -1,0 +1,17 @@
+<div class="sidebar">
+    <div class="p-3">
+        <button class="btn btn-outline-light w-100 mb-3" (click)="onToggleSidebar()">
+            <i class="fas fa-times me-2"></i>Ocultar Menú
+        </button>
+
+        <nav class="nav flex-column">
+            @for (item of menuItems; track item.path) {
+            <a class="nav-link" [routerLink]="item.path" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                <i class="{{item.icon}}"></i>
+                {{item.title}}
+            </a>
+            }
+        </nav>
+    </div>
+</div>

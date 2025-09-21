@@ -1,0 +1,9 @@
+.footer {
+  margin-top: auto;
+  border-top: 1px solid #444;
+}
+
+/* Asegurar que el footer se mantenga en la parte inferior*/
+:host {
+  display: block;
+}

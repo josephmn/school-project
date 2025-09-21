@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="btn btn-dark me-2" (click)="onToggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-graduation-cap me-2"></i>School Management
+        </a>
+
+        <div class="d-flex align-items-center ms-auto">
+            <div class="dropdown" [class.show]="isUserMenuOpen">
+                <button class="btn btn-outline-light dropdown-toggle" (click)="toggleUserMenu()" type="button"
+                    aria-expanded="isUserMenuOpen">
+                    <i class="fas fa-user me-2"></i>
+                    {{ authService.currentUserValue?.name }}
+                </button>
+
+                @if (isUserMenuOpen) {
+                <div class="dropdown-menu dropdown-menu-end show" (click)="onDropdownClick($event)">
+                    <a class="dropdown-item" href="#" (click)="onDropdownClick($event)">
+                        <i class="fas fa-user-cog me-2"></i>Mi Perfil
+                    </a>
+                    <a class="dropdown-item" href="#" (click)="onDropdownClick($event)">
+                        <i class="fas fa-cog me-2"></i>Configuración
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" (click)="logout(); onDropdownClick($event)">
+                        <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                    </a>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</nav>
